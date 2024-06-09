@@ -115,7 +115,7 @@ const InterimEvaluations = () => {
                 is.
               </Typography>
               <Typography variant="body4" sx={{ mt: 5 }}>
-                Foto's worden niet opgeslagen, alleen de antwoorden woorden
+                Foto's worden niet opgeslagen, alleen de antwoorden worden
                 geanalyseerd.
               </Typography>
             </CardContent>

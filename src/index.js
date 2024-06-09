@@ -26,6 +26,7 @@ const theme = createTheme({
       fontFamily: "Montserrat, Arial",
       fontWeight: 400,
       fontSize: 12,
+      color: "rgba(2, 2, 2, 0.87)",
     },
     body2: {
       fontFamily: "Montserrat, Arial",
@@ -41,6 +42,8 @@ const theme = createTheme({
       fontFamily: "Montserrat, Arial",
       fontSize: 10,
       fontStyle: "italic",
+      color: "rgba(2, 2, 2, 0.60)",
+
     },
     body5: {
       fontFamily: "Montserrat, Arial",
