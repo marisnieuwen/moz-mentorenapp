@@ -50,10 +50,10 @@ const TopCard = ({ text, showTooltip }) => {
               <Box
                 sx={{
                   position: "absolute",
-                  top: "-2.5rem",
-                  right: "-7.5rem",
+                  top: "-2.75rem",
+                  right: "-7rem",
                   transform: "translateX(-50%)",
-                  background: "#FFFFFF",
+                  background: "#FEFEFE",
                   padding: "0.5rem",
                   borderRadius: "0.5rem",
                   boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",

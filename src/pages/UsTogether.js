@@ -60,7 +60,7 @@ const TopContainer = styled(Box)({
 });
 
 const Card = styled(Box)({
-  backgroundColor: "#fff",
+  backgroundColor: "#FEFEFE",
   borderRadius: "12px",
   boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
   padding: "var(--2, 1rem) 0.625rem",

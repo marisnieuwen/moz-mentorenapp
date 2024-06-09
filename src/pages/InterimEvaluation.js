@@ -48,7 +48,7 @@ const CardContainer = styled(Card)({
   borderRadius: "0.75rem",
   boxShadow:
     "-2px 21px 6px 0px rgba(0, 0, 0, 0.00), -1px 14px 5px 0px rgba(0, 0, 0, 0.01), -1px 8px 5px 0px rgba(0, 0, 0, 0.03), 0px 3px 3px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
-  padding: "var(--2, 1rem) 0.625rem",
+  padding: "0rem 0.625rem",
   width: "100%",
   maxWidth: "24.375rem",
   border: "0.5px solid rgba(2, 2, 2, 0.13)",
@@ -107,7 +107,7 @@ const InterimEvaluations = () => {
         <RowContainer>
           <CardContainer>
             <CardContent>
-              <Typography variant="h6">Thema's</Typography>
+              <Typography variant="h5">Thema's</Typography>
               <Typography variant="body1">
                 Upload per thema de bijbehorende pagina uit het evaluatieboek
                 die je samen met je mentee hebt ingevuld. Zorg ervoor dat de

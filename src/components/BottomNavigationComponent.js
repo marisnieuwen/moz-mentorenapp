@@ -11,21 +11,25 @@ const BottomNavigationComponent = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const getStyles = (path) => ({
-    icon: {
-      color: location.pathname === path ? "#6A52C7" : "#020202",
-      opacity: location.pathname === path ? 1 : 0.5,
-      width: "22px",
-      height: "22px",
-    },
-    label: {
-      fontFamily: '"Baloo 2", Arial',
-      fontWeight: location.pathname === path ? 600 : 400,
-      color: location.pathname === path ? "#6A52C7" : "#020202",
-      opacity: location.pathname === path ? 1 : 0.5,
-      fontSize: 10,
-    },
-  });
+  const getStyles = (path) => {
+    const isActive =
+      location.pathname === path || location.pathname.startsWith(`${path}/`);
+    return {
+      icon: {
+        color: isActive ? "#6A52C7" : "#020202",
+        opacity: isActive ? 1 : 0.5,
+        width: "22px",
+        height: "22px",
+      },
+      label: {
+        fontFamily: '"Baloo 2", Arial',
+        fontWeight: isActive ? 600 : 400,
+        color: isActive ? "#6A52C7" : "#020202",
+        opacity: isActive ? 1 : 0.5,
+        fontSize: 10,
+      },
+    };
+  };
 
   return (
     <BottomNavigation

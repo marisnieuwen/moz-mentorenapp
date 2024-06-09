@@ -8,7 +8,7 @@ import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
 const CardContainer = styled(Box)({
   display: "flex",
   width: "11.35rem",
-  padding: "16px 10px",
+  padding: "1.45rem 0.625rem",
   flexDirection: "column",
   alignItems: "flex-start",
   gap: "10px",
@@ -77,13 +77,13 @@ const SpecialGoalFrame = styled(Box)({
 const GoalItem = ({ text, icon }) => (
   <GoalFrame>
     {icon && <Box sx={{ color: "#AF96E1" }}>{icon}</Box>}
-    <Typography variant="body2">{text}</Typography>
+    <Typography variant="body1">{text}</Typography>
   </GoalFrame>
 );
 
 const SpecialGoalItem = ({ text }) => (
   <SpecialGoalFrame>
-    <Typography variant="body2">{text}</Typography>
+    <Typography variant="body1">{text}</Typography>
   </SpecialGoalFrame>
 );
 

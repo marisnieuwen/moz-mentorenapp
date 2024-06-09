@@ -19,18 +19,18 @@ const theme = createTheme({
     h5: {
       fontFamily: "Montserrat, Arial",
       fontWeight: 800,
-      fontSize: 14,
+      fontSize: 16,
       color: "rgba(2, 2, 2, 0.87)",
     },
     body1: {
       fontFamily: "Montserrat, Arial",
       fontWeight: 400,
-      fontSize: 11,
+      fontSize: 12,
     },
     body2: {
       fontFamily: "Montserrat, Arial",
       fontWeight: 400,
-      fontSize: 10,
+      fontSize: 11,
       color: "rgba(2, 2, 2, 0.60)",
     },
     body3: {
