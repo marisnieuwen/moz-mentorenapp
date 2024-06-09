@@ -1,0 +1,23 @@
+{
+    "mentee": {
+      "doelen": ["mentee-doel-1", "taal-doel-1", "mentee-doel-3"],
+      "gender": "female",
+      "leeftijd": 9,
+      "leerjaar": 6,
+      "niveau": "Basisschool (PO)",
+      "schoolId": "obs-blijvliet"
+    },
+    "mentor": {
+      "gender": "female",
+      "leeftijd": 18
+    },
+    "mentorMenteeRelatieId": "data-from-webapp-1",
+    "mentor_vraag1": 0,
+    "mentor_vraag2": 0,
+    "mentor_vraag3": "",
+    "schooljaar": "2023-2024",
+    "mentee_vraag1": 0,
+    "mentee_vraag2": 0,
+    "mentee_vraag3": ""
+  }
+  
