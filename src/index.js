@@ -43,7 +43,6 @@ const theme = createTheme({
       fontSize: 10,
       fontStyle: "italic",
       color: "rgba(2, 2, 2, 0.60)",
-
     },
     body5: {
       fontFamily: "Montserrat, Arial",
@@ -71,4 +70,15 @@ root.render(
 );
 
 // Register the service worker
-serviceWorkerRegistration.register();
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("ServiceWorker geregistreerd: ", registration);
+      })
+      .catch((registrationError) => {
+        console.log("ServiceWorker registratie fout: ", registrationError);
+      });
+  });
+}

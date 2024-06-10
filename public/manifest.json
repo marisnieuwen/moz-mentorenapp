@@ -1,6 +1,12 @@
 {
   "short_name": "MentorenApp",
   "name": "De app voor Mentoren op Zuid",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEFEFE",
+  "description": "De app voor mentoren van MoZ om naast de bijeenkomsten te gebruiken en de evaluaties in te leveren.",
+  "orientation": "portrait-primary",
+  "theme_color": "#FEFEFE",
   "icons": [
     {
       "src": "favicon.ico",
@@ -17,10 +23,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#FEFEFE",
-  "background_color": "#FFF9E2",
-  "orientation": "portrait-primary"
+  ]
 }
