@@ -437,9 +437,13 @@ const UsTogether = () => {
                   </StyledButton>
                 )}
                 {isEditing ? (
-                  <StyledButton onClick={handleSaveClick}>Opslaan</StyledButton>
+                  <StyledButton onClick={handleSaveClick} variant="contained">
+                    Opslaan
+                  </StyledButton>
                 ) : (
-                  <StyledButton onClick={handleSend}>Verzenden</StyledButton>
+                  <StyledButton onClick={handleSend} variant="contained">
+                    Verzenden
+                  </StyledButton>
                 )}
               </ButtonContainer>
             </>

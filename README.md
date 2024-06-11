@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# MoZ Evaluatie PWA - README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![MoZ Mascot](src/images/moz-mascot.svg)
 
-## Available Scripts
+## Introductie
 
-In the project directory, you can run:
+Dit project maakt deel uit van mijn afstudeeronderzoek en heeft als doel mentoren te ondersteunen tijdens het traject als studentmentor bij het programma MoZ (Mentoren op Zuid). Tegelijkertijd zorgt het project ervoor dat MoZ betere monitoring krijgt over haar deelnemers (mentoren en mentees) door middel van evaluaties.
 
-### `npm start`
+De evaluaties worden fysiek ingevuld tijdens een MoZ bijeenkomst door mentee en mentor samen in een evaluatieboek. Het is daarna de verantwoordelijkheid van de mentor om foto's te maken van de evaluatiepagina's en deze te uploaden in de app bij het bijbehorende thema. De foto's worden niet opgeslagen, maar enkel geanalyseerd om de juiste antwoorden bij de vragen te extraheren.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Het analyseren van de evaluaties gebeurt in een Node.js backend die via Azure App Service in de cloud draait. Hierbij wordt een API-call gedaan naar de Microsoft Azure Vision API om de data van de afbeelding op te vragen. Deze data wordt vervolgens in een JSON-bestand geplaatst en geanalyseerd op specifieke datapunten zoals de x- en y-waarden van de zinnen "antwoord op vraag X". Op basis van deze waarden wordt gezocht naar emoji's voor vragen 1 en 2 en naar handgeschreven tekst voor vraag 3, die middels OCR wordt herkend.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data kan bekijken en bewerken. Bij het versturen wordt de data samen met de `userData.json` naar de Firebase-database gestuurd. `userData.json` bevat hardcoded gebruikersgegevens. In de toekomst zouden dit echte gegevens moeten zijn, verkregen via Hogeschool Rotterdam SSO, waarbij de mentor een mentee aan zijn/haar (graag genderneutraal) account kan toevoegen.
 
-### `npm test`
+## Vereisten
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js
+- React.js
+- Microsoft Azure Vision API
+- Microsoft Azure App Service
+- Firebase
+- Ngrok (voor lokale ontwikkeling)
 
-### `npm run build`
+## Installatie
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Installeer de benodigde dependencies:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Configureer Firebase:**
 
-### `npm run eject`
+   - Maak een Firebase-project aan in de [Firebase Console](https://console.firebase.google.com/).
+   - Voeg je Firebase-configuratie toe in een `.env` bestand:
+     ```
+     REACT_APP_FIREBASE_API_KEY=YOUR_API_KEY
+     REACT_APP_FIREBASE_AUTH_DOMAIN=YOUR_AUTH_DOMAIN
+     REACT_APP_FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+     REACT_APP_FIREBASE_STORAGE_BUCKET=YOUR_STORAGE_BUCKET
+     REACT_APP_FIREBASE_MESSAGING_SENDER_ID=YOUR_MESSAGING_SENDER_ID
+     REACT_APP_FIREBASE_APP_ID=YOUR_APP_ID
+     ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Azure Vision API configuratie:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - Maak een Microsoft Azure account aan en verkrijg de Vision API key en endpoint.
+   - Voeg deze toe aan je `.env` bestand:
+     ```
+     REACT_APP_AZURE_VISION_API_KEY=YOUR_VISION_API_KEY
+     REACT_APP_AZURE_VISION_ENDPOINT=YOUR_VISION_ENDPOINT
+     ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Backend configuratie:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   - Plaats de backend-code in de `/backend` directory.
+   - Installeer de benodigde backend dependencies:
+     ```bash
+     cd backend
+     npm install
+     ```
 
-## Learn More
+5. **Deploy de backend naar Azure App Service:**
+   - Volg de instructies op de [Azure App Service documentatie](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs) om je Node.js backend te deployen.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Gebruik
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Start de frontend:**
 
-### Code Splitting
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Start de backend:**
 
-### Analyzing the Bundle Size
+   ```bash
+   cd backend
+   node index.js
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Gebruik Ngrok voor lokale ontwikkeling:**
 
-### Making a Progressive Web App
+   - Installeer Ngrok via de [Ngrok website](https://ngrok.com/).
+   - Start Ngrok om je lokale server publiek toegankelijk te maken:
+     ```bash
+     ngrok http 3000
+     ```
+   - Gebruik de gegenereerde Ngrok URL om toegang te krijgen tot je app.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. **Gebruik de app:**
+   - Maak foto's van de evaluatiepagina's en upload deze in de app.
+   - De foto's worden geanalyseerd door de Azure Vision API en de resultaten worden getoond in de app.
+   - Bewerk indien nodig de resultaten en verstuur de data naar de Firebase-database.
 
-### Advanced Configuration
+## Structuur
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+/backend - Bevat de Node.js backend code
+/src - Bevat de React.js frontend code
+.env - Bevat de configuratie variabelen voor Firebase en Azure Vision API
 
-### Deployment
+## Toekomstige verbeteringen
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Integratie met SSO van alle deelnemende mentor scholen voor het verkrijgen van echte gebruikersgegevens.
+- Mogelijkheid voor mentoren om mentees toe te voegen aan hun account.
 
-### `npm run build` fails to minify
+## Licentie
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dit project is gelicentieerd onder de MIT-licentie. Zie het [LICENSE](LICENSE) bestand voor meer informatie.
