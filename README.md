@@ -1,6 +1,6 @@
 # MoZ Evaluatie PWA - README
 
-<img src="src/images/moz-mascot.svg" alt="MoZ Mascot" height="64" width="64">
+<img src="src/images/moz-mascot.svg" alt="MoZ Mascot" height="96" width="96">
 
 ## Introductie
 
