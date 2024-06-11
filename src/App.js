@@ -9,7 +9,6 @@ import Toolkit from "./pages/Toolkit";
 import Menu from "./pages/Menu";
 import InterimEvaluations from "./pages/InterimEvaluation";
 import UsTogether from "./pages/UsTogether";
-import InstallPromptComponent from "./components/InstallPromptComponent";
 
 function App() {
   return (
@@ -40,7 +39,6 @@ function App() {
           </Routes>
         </Container>
         <BottomNavigationComponent />
-        <InstallPromptComponent />
       </Box>
     </Router>
   );
