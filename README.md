@@ -102,10 +102,21 @@ Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data k
 
 ## Structuur
 
-- /backend - Bevat de Node.js backend code
-- /src - Bevat de React.js frontend code
-- .env - Bevat de configuratie variabelen voor Firebase en Azure Vision API
-- /backend-template.js - De code die nodig is om de analyses uit te voeren, hernoemen naar index.js
+```bash
+/backend - Bevat de Node.js backend code
+```
+
+```bash
+/src - Bevat de React.js frontend code
+```
+
+```bash
+.env - Bevat de configuratie variabelen voor Firebase en Azure Vision API
+```
+
+```bash
+/backend-template.js - De code die nodig is om de analyses uit te voeren, hernoemen naar index.js
+```
 
 ## Toekomstige verbeteringen
 
