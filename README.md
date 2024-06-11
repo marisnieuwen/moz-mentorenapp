@@ -53,12 +53,20 @@ Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data k
 
 4. **Backend configuratie:**
 
-   - Plaats de backend-code in de `/backend` directory.
-   - Installeer de benodigde backend dependencies:
-     ```bash
-     cd backend
-     npm install
-     ```
+- Maak een `backend` directory aan met de volgende bestanden:
+
+        ```
+        /backend
+        ├── index.js (kopieer de inhoud van backend-template.js)
+        ├── package.json
+        └── .env
+        ```
+
+  - **Voorbeeld `.env`:**
+    ```
+    AZURE_VISION_API_KEY=YOUR_AZURE_VISION_API_KEY
+    AZURE_VISION_ENDPOINT=YOUR_AZURE_VISION_ENDPOINT
+    ```
 
 5. **Deploy de backend naar Azure App Service:**
    - Volg de instructies op de [Azure App Service documentatie](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs) om je Node.js backend te deployen.
@@ -97,6 +105,7 @@ Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data k
 /backend - Bevat de Node.js backend code
 /src - Bevat de React.js frontend code
 .env - Bevat de configuratie variabelen voor Firebase en Azure Vision API
+/backend-template.js - De code die nodig is om de analyses uit te voeren, hernoemen naar index.js
 
 ## Toekomstige verbeteringen
 
