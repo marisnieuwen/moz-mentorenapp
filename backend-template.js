@@ -1,18 +1,18 @@
-// const express = require("express");
-// const { AzureKeyCredential } = require("@azure/core-auth");
-// const createClient = require("@azure-rest/ai-vision-image-analysis").default;
-// const multer = require("multer");
-// const dotenv = require("dotenv");
-// const fs = require("fs");
-// const cors = require("cors");
+const express = require("express");
+const { AzureKeyCredential } = require("@azure/core-auth");
+const createClient = require("@azure-rest/ai-vision-image-analysis").default;
+const multer = require("multer");
+const dotenv = require("dotenv");
+const fs = require("fs");
+const cors = require("cors");
 
-// dotenv.config();
+dotenv.config();
 
-// const app = express();
-// const port = process.env.PORT || 5000;
+const app = express();
+const port = process.env.PORT || 5000;
 
-// const endpoint = process.env.REACT_APP_VISION_ENDPOINT;
-// const key = process.env.REACT_APP_VISION_KEY;
+const endpoint = process.env.REACT_APP_VISION_ENDPOINT;
+const key = process.env.REACT_APP_VISION_KEY;
 
 if (!endpoint || !key) {
   throw new Error(

@@ -164,7 +164,7 @@ const InterimEvaluations = () => {
           />
           <EvaluationItemCard
             title="MoZ"
-            description="Over jou ervaringen met het MoZ-programma."
+            description="Over jouw ervaringen met het MoZ-programma."
             buttonText="Uploaden"
             buttonColor="#4E758C"
             icon={mozIcon}
