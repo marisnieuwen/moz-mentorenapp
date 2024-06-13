@@ -83,21 +83,31 @@ const processQuestion3 = (blocks, references, answers) => {
   let currentSection = null;
 
   blocks.forEach((block) => {
+    // Iterate over each line in the block
     block.lines.forEach((line) => {
+      // Convert the line text to lowercase
       const text = line.text.toLowerCase();
+      // Get the y position of the bounding polygon of the line
       const yPosition = line.boundingPolygon[0].y;
+      // Get the x position of the bounding polygon of the line
       const xPosition = line.boundingPolygon[0].x;
 
+      // Check if the line is within the y-position of question 3
       if (
         yPosition > references.question3.y &&
         xPosition >= references.question3.x - 50 &&
         xPosition <= references.question3.x + 50
       ) {
+        // If the line contains "mentor", set the current section to "mentor"
         if (text.includes("mentor")) {
           currentSection = "mentor";
-        } else if (text.includes("mentee")) {
+        }
+        // If the line contains "mentee", set the current section to "mentee"
+        else if (text.includes("mentee")) {
           currentSection = "mentee";
-        } else if (currentSection) {
+        }
+        // If the current section is set (either "mentor" or "mentee"), add the line text to the corresponding answer
+        else if (currentSection) {
           answers.question3[currentSection] += `${line.text} `;
         }
       }
@@ -115,6 +125,7 @@ const processQuestion3 = (blocks, references, answers) => {
   return answers;
 };
 
+// Process questions 1 and 2 to assign smileys
 const processQuestionsWithSmileys = (
   blocks,
   references,
@@ -122,6 +133,7 @@ const processQuestionsWithSmileys = (
   smileys,
   colorToScore
 ) => {
+  // Iterate over each block
   blocks.forEach((block) => {
     block.lines.forEach((line) => {
       const text = line.text.toLowerCase();
@@ -153,19 +165,28 @@ const processQuestionsWithSmileys = (
   // Find and assign the corresponding smileys to question 1 and 2
   smileys.forEach((smiley) => {
     const score = colorToScore[smiley.color];
+    // Assign smileys to question 1 or 2 based on y-position
     if (
       smiley.y > references.question1.y &&
       smiley.y < references.question2.y
     ) {
+      // Assign smileys to mentor or mentee based on x-position
       if (answers.question1.mentorScore === null) {
         answers.question1.mentorScore = score;
-      } else {
+      }
+      // If mentor score is already assigned, assign to mentee score
+      else {
         answers.question1.menteeScore = score;
       }
-    } else if (smiley.y > references.question2.y) {
+    }
+    // Assign smileys to question 2
+    else if (smiley.y > references.question2.y) {
+      // Assign smileys to mentor or mentee based on x-position
       if (answers.question2.mentorScore === null) {
         answers.question2.mentorScore = score;
-      } else {
+      }
+      // If mentor score is already assigned, assign to mentee score
+      else {
         answers.question2.menteeScore = score;
       }
     }
@@ -180,6 +201,7 @@ const processQuestionsWithSmileys = (
   return answers;
 };
 
+// Extract answers from the analysis results
 const extractAnswers = (blocks, denseCaptions) => {
   const answers = {
     question1: { mentorScore: null, menteeScore: null },
@@ -187,13 +209,14 @@ const extractAnswers = (blocks, denseCaptions) => {
     question3: { mentor: "", mentee: "" },
   };
 
+  // References for the questions
   const references = {
     question1: { x: null, y: null },
     question2: { x: null, y: null },
     question3: { x: null, y: null },
   };
 
-  // Zoek de y-positie en x-positie van "Antwoorden op vraag 1", "Antwoorden op vraag 2" en "Antwoorden op vraag 3"
+  // Search for the y and x positions of the questions in the blocks
   blocks.forEach((block) => {
     block.lines.forEach((line) => {
       const text = line.text.toLowerCase();
@@ -210,13 +233,14 @@ const extractAnswers = (blocks, denseCaptions) => {
     });
   });
 
+  // Check if references for questions are found
   Object.values(references).forEach((reference) => {
     if (reference.y === null || reference.x === null) {
       throw new Error("Reference text for questions not found.");
     }
   });
 
-  // Verwerk vraag 3 apart
+  // Process question 3 to extract mentor and mentee answers
   processQuestion3(blocks, references, answers);
 
   // Map colors to scores
@@ -228,7 +252,7 @@ const extractAnswers = (blocks, denseCaptions) => {
     red: 1,
   };
 
-  // Sorteer de dense captions op y-positie en vervolgens op x-positie
+  // Sort dense captions based on y-position and then x-position
   denseCaptions.sort((a, b) => {
     if (a.boundingBox.y === b.boundingBox.y) {
       return a.boundingBox.x - b.boundingBox.x;
@@ -236,7 +260,7 @@ const extractAnswers = (blocks, denseCaptions) => {
     return a.boundingBox.y - b.boundingBox.y;
   });
 
-  // Verwerk de dense captions voor emoji's in volgorde
+  // Process smileys from dense captions based on color
   const smileys = denseCaptions
     .filter((caption) => caption.text.match(/(green|blue|yellow|pink|red)/i))
     .map((caption) => {
@@ -261,16 +285,21 @@ const extractAnswers = (blocks, denseCaptions) => {
   return answers;
 };
 
+// Combine lines into sentences
 const combineLines = (lines) => {
   let combined = [];
   let current = "";
 
+  // Iterate over each line
   lines.forEach((line) => {
+    // Check if the line ends with a period, exclamation mark, or question mark
     if (line.endsWith(".") || line.endsWith("!") || line.endsWith("?")) {
       current += " " + line;
       combined.push(current.trim());
       current = "";
-    } else {
+    }
+    // If the line does not end with punctuation, add it to the current sentence
+    else {
       current += " " + line;
     }
   });
@@ -282,6 +311,7 @@ const combineLines = (lines) => {
   return combined.join(". ");
 };
 
+// Format the answer text
 const formatAnswer = (text) => {
   return text
     .split(". ")
@@ -292,6 +322,7 @@ const formatAnswer = (text) => {
     .join(". ");
 };
 
+// Route to analyze the uploaded image
 app.post("/analyze-image", upload.single("image"), async (req, res) => {
   try {
     console.log("Received image for analysis");
@@ -310,6 +341,7 @@ app.post("/analyze-image", upload.single("image"), async (req, res) => {
   }
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
