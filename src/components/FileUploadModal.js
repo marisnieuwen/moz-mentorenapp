@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Typography,
   Input,
   Dialog,
@@ -10,7 +9,7 @@ import {
   DialogActions,
   CircularProgress,
 } from "@mui/material";
-import { styled } from "@mui/system";
+import { CustomButton } from "./StyledComponents";
 import axios from "axios";
 
 const BestandUploadModal = ({ open, onClose, onCapture }) => {
@@ -22,19 +21,23 @@ const BestandUploadModal = ({ open, onClose, onCapture }) => {
     setSelectedFile(event.target.files[0]);
   };
 
+  // Function to handle the analyze button click
   const handleAnalyze = async () => {
     if (selectedFile) {
       try {
+        // Let the user know that the file is being analyzed
         setMessage("Bestand wordt geanalyseerd...");
         setLoading(true);
         console.log("Analysing starting now...");
 
+        // Make a FormData object to send the image to the backend
         const formData = new FormData();
         formData.append("image", selectedFile);
 
+        // Send the image to the backend for analysis
         try {
           const response = await axios.post(
-            "https://moz-backend.azurewebsites.net/analyze-image",
+            "https://moz-backend.azurewebsites.net/analyze-image", //change this to your backend URL
             formData,
             {
               headers: {
@@ -43,6 +46,7 @@ const BestandUploadModal = ({ open, onClose, onCapture }) => {
             }
           );
 
+          // Receive the answers from the backend
           const answers = response.data;
 
           setMessage("Analysegegevens ontvangen");
@@ -50,7 +54,7 @@ const BestandUploadModal = ({ open, onClose, onCapture }) => {
           console.log("Extracted answers:", answers);
 
           onCapture(answers);
-          onClose(); // Sluit de modal na het analyseren
+          onClose(); // Close the modal
         } catch (error) {
           console.error(
             "Fout bij het verwerken van de analyse van de afbeelding:",
@@ -71,19 +75,6 @@ const BestandUploadModal = ({ open, onClose, onCapture }) => {
       setMessage("Selecteer eerst een bestand.");
     }
   };
-
-  const CustomButton = styled(Button)(({ variant }) => ({
-    display: "flex",
-    padding: "0.6rem 0.9rem",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: "1.6rem",
-    borderRadius: "0.375rem",
-    textTransform: "none", // Zorg ervoor dat de tekst niet in hoofdletters staat
-    ...(variant === "outlined"
-      ? { color: "#182C61", border: "1px solid #182C61" }
-      : { background: "#182C61", color: "#fff" }),
-  }));
 
   return (
     <Dialog open={open} onClose={onClose}>

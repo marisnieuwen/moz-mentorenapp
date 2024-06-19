@@ -7,26 +7,11 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { WeekCardContainer } from "./StyledComponents";
 import { styled } from "@mui/system";
 import ChecklistOutlined from "@mui/icons-material/ChecklistOutlined";
 import NoteAltOutlined from "@mui/icons-material/NoteAltOutlined";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import Card from "./Card";
-
-const CardContainer = styled(Box)({
-  display: "flex",
-  width: "24.375rem",
-  padding: "1rem 0.625rem",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  flexShrink: 0,
-  gap: "0.625rem",
-  backgroundColor: "#FEFEFE",
-  borderRadius: "12px",
-  border: "0.5px solid rgba(2, 2, 2, 0.13)",
-  boxShadow:
-    "-2px 21px 6px 0px rgba(0, 0, 0, 0.00), -1px 14px 5px 0px rgba(0, 0, 0, 0.01), -1px 8px 5px 0px rgba(0, 0, 0, 0.03), 0px 3px 3px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.05)",
-});
 
 const SubFrame1 = styled(Box)({
   display: "flex",
@@ -46,7 +31,7 @@ const TextFrame = styled(Box)({
 
 const SubFrame2 = styled(List)({
   display: "flex",
-  padding: "0rem 0.625rem",
+  padding: "0rem 0.255rem",
   flexDirection: "column",
   alignItems: "flex-start",
   // gap: "0.5rem",
@@ -65,7 +50,7 @@ const ListItemContainer = styled(ListItem)({
 
 const WeekCard = ({ title, description, tasks, taskTitles }) => {
   return (
-    <CardContainer>
+    <WeekCardContainer>
       <SubFrame1>
         <TextFrame>
           <Typography variant="h5" sx={{ fontWeight: 800 }}>
@@ -79,20 +64,38 @@ const WeekCard = ({ title, description, tasks, taskTitles }) => {
       <SubFrame2>
         {tasks.map((task, index) => (
           <ListItemContainer key={index}>
-            <ListItemIcon sx={{ minWidth: "unset", marginRight: "10px" }}>
+            <ListItemIcon
+              sx={{
+                minWidth: "unset",
+                marginRight: "0.3rem",
+                width: 32,
+                height: 32,
+              }}
+            >
               {index === 0 ? (
-                <ChecklistOutlined sx={{ color: "#AF96E1" }} />
+                <ChecklistOutlined
+                  sx={{ color: "#AF96E1", width: 24, height: 24 }}
+                />
               ) : index === 1 ? (
-                <NoteAltOutlined sx={{ color: "#AF96E1" }} />
+                <NoteAltOutlined
+                  sx={{ color: "#AF96E1", width: 24, height: 24 }}
+                />
               ) : (
-                <FileUploadOutlinedIcon sx={{ color: "#AF96E1" }} />
+                <FileUploadOutlinedIcon
+                  sx={{ color: "#AF96E1", width: 24, height: 24 }}
+                />
               )}
             </ListItemIcon>
-            <ListItemText primary={taskTitles[index]} secondary={task} />
+            <ListItemText
+              primary={taskTitles[index]}
+              primaryTypographyProps={{ variant: "h4" }}
+              secondary={task}
+              secondaryTypographyProps={{ variant: "body5" }}
+            />
           </ListItemContainer>
         ))}
       </SubFrame2>
-    </CardContainer>
+    </WeekCardContainer>
   );
 };
 

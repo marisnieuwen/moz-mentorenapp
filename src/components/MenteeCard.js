@@ -83,34 +83,34 @@ const MenteeCard = ({ mentee }) => {
       <SubFrame2>
         <InnerFrame>
           <InnerTextFrame1>
-            <Typography variant="body1">Naam:</Typography>
+            <Typography variant="body2">Naam:</Typography>
           </InnerTextFrame1>
           <InnerTextFrame2>
-            <Typography variant="body1">{mentee.name}</Typography>
+            <Typography variant="body2">{mentee.name}</Typography>
           </InnerTextFrame2>
         </InnerFrame>
         <InnerFrame>
           <InnerTextFrame1>
-            <Typography variant="body1">Leeftijd:</Typography>
+            <Typography variant="body2">Leeftijd:</Typography>
           </InnerTextFrame1>
           <InnerTextFrame2>
-            <Typography variant="body1">{mentee.age}</Typography>
+            <Typography variant="body2">{mentee.age}</Typography>
           </InnerTextFrame2>
         </InnerFrame>
         <InnerFrame>
           <InnerTextFrame1>
-            <Typography variant="body1">School:</Typography>
+            <Typography variant="body2">School:</Typography>
           </InnerTextFrame1>
           <InnerTextFrame2>
-            <Typography variant="body1">{mentee.school}</Typography>
+            <Typography variant="body2">{mentee.school}</Typography>
           </InnerTextFrame2>
         </InnerFrame>
         <InnerFrame>
           <InnerTextFrame1>
-            <Typography variant="body1">Groep:</Typography>
+            <Typography variant="body2">Groep:</Typography>
           </InnerTextFrame1>
           <InnerTextFrame2>
-            <Typography variant="body1">{mentee.group}</Typography>
+            <Typography variant="body2">{mentee.group}</Typography>
           </InnerTextFrame2>
         </InnerFrame>
       </SubFrame2>

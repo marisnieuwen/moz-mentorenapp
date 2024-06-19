@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Tooltip } from "@mui/material";
+import { ResponsiveBox } from "./StyledComponents";
 import Card from "./Card";
 import styled from "@emotion/styled";
 import mascotImage from "../images/MoZ Mascot.png";
@@ -17,17 +18,6 @@ const Image = styled("img")(({ theme }) => ({
     right: "-1.6rem",
   },
 }));
-
-const ResponsiveBox = styled(Box)({
-  width: "100%",
-  minWidth: "22rem",
-  maxWidth: "25rem",
-  display: "flex",
-  alignItems: "center",
-  gap: "0.625rem",
-  flexWrap: "wrap",
-  boxSizing: "border-box",
-});
 
 const Container = styled(Box)({
   display: "inline-flex",

@@ -2,10 +2,7 @@ import React from "react";
 import { BottomNavigation, BottomNavigationAction, Badge } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import NoteAltOutlinedIcon from "@mui/icons-material/NoteAltOutlined";
-import HomeRepairServiceOutlinedIcon from "@mui/icons-material/HomeRepairServiceOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Height } from "@mui/icons-material";
 
 const BottomNavigationComponent = () => {
   const location = useLocation();
@@ -18,15 +15,15 @@ const BottomNavigationComponent = () => {
       icon: {
         color: isActive ? "#6A52C7" : "#020202",
         opacity: isActive ? 1 : 0.5,
-        width: "22px",
-        height: "22px",
+        width: "24px",
+        height: "24px",
       },
       label: {
         fontFamily: '"Baloo 2", Arial',
         fontWeight: isActive ? 600 : 400,
         color: isActive ? "#6A52C7" : "#020202",
         opacity: isActive ? 1 : 0.5,
-        fontSize: 10,
+        fontSize: 14,
       },
     };
   };

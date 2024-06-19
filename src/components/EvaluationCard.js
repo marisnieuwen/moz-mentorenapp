@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import Card from "./Card";
+import { CustomButton, TextContainer } from "./StyledComponents";
 
 const EvaluationCardContainer = styled(Box)({
   display: "flex",
@@ -9,23 +10,6 @@ const EvaluationCardContainer = styled(Box)({
   padding: "0.5rem", // 16px
   gap: "1rem", // 16px
   backgroundColor: "#FEFEFE",
-});
-
-const TextContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.75rem", // 12px
-});
-
-const CustomButton = styled(Button)({
-  backgroundColor: "#182C61",
-  display: "flex",
-  borderRadius: "0.375rem",
-  padding: "0.6rem 0.6rem",
-  textTransform: "none", // Zorg ervoor dat de tekst niet in hoofdletters staat
-  "&:hover": {
-    backgroundColor: "#14244D",
-  },
 });
 
 const EvaluationCard = ({

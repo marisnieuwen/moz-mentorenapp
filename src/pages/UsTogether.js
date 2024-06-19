@@ -4,7 +4,6 @@ import {
   Typography,
   Button,
   Alert,
-  TextField,
   MenuItem,
   Select,
   FormControl,
@@ -12,16 +11,18 @@ import {
   TextareaAutosize,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import { EvaluationFormButton } from "../components/StyledComponents";
 import { useLocation, useNavigate } from "react-router-dom";
 import { doc, setDoc, collection } from "firebase/firestore";
 import { firestore } from "../firebase/firebaseConfig";
+
 import Emoji5 from "../images/emoji-5.svg";
 import Emoji4 from "../images/emoji-4.svg";
 import Emoji3 from "../images/emoji-3.svg";
 import Emoji2 from "../images/emoji-2.svg";
 import Emoji1 from "../images/emoji-1.svg";
 import TopCard from "../components/TopCard";
-import SuccessModal from "../components/SuccesModal"; // Adjust the path accordingly
+import SuccessModal from "../components/SuccesModal";
 import userData from "../userData.json";
 
 const ContentContainer = styled(Box)({
@@ -79,8 +80,13 @@ const QuestionHeader = styled(Box)({
   marginBottom: "0.5rem",
 });
 
+const QuestionNumber = styled(Typography)({
+  flexShrink: 0,
+});
+
 const QuestionText = styled(Typography)({
   marginLeft: "0.5rem",
+  flexGrow: 1,
 });
 
 const AnswerContainer = styled(Box)({
@@ -88,12 +94,13 @@ const AnswerContainer = styled(Box)({
   alignSelf: "stretch",
   width: "100%",
   gap: "6rem",
-  padding: "0 2rem",
+  padding: "0 1rem",
 });
 
 const AnswerText = styled(Box)({
   display: "flex",
   flexDirection: "column",
+  flexShrink: 0,
 });
 
 const AnswerEmoji = styled(Box)({
@@ -119,19 +126,14 @@ const ButtonContainer = styled(Box)({
   gap: "1rem",
 });
 
-const StyledButton = styled(Button)(({ variant }) => ({
+const ColumnAnswerContainer = styled(Box)({
   display: "flex",
-  height: "3.625rem",
-  padding: "0.8125rem 1rem",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: "0.625rem",
-  flex: "1 0 0",
-  borderRadius: "0.375rem",
-  ...(variant === "outlined"
-    ? { color: "#182C61", border: "2px solid #182C61" }
-    : { background: "#182C61", color: "#fff" }),
-}));
+  flexDirection: "column",
+  alignSelf: "stretch",
+  width: "100%",
+  padding: "0 2rem",
+  gap: "1rem",
+});
 
 const UsTogether = () => {
   const location = useLocation();
@@ -255,7 +257,7 @@ const UsTogether = () => {
             <>
               <Card>
                 <QuestionHeader>
-                  <Typography variant="h5">Vraag 1:</Typography>
+                  <QuestionNumber variant="h5">Vraag 1:</QuestionNumber>
                   <QuestionText variant="body2">
                     Ik kijk elke week uit naar Mentoren op Zuid
                   </QuestionText>
@@ -322,7 +324,7 @@ const UsTogether = () => {
 
               <Card>
                 <QuestionHeader>
-                  <Typography variant="h5">Vraag 2:</Typography>
+                  <QuestionNumber variant="h5">Vraag 2:</QuestionNumber>
                   <QuestionText variant="body2">
                     Ben je blij met hoe we problemen samen oplossen?
                   </QuestionText>
@@ -394,7 +396,7 @@ const UsTogether = () => {
                     Waar kijk je naar uit als we samen zijn?
                   </QuestionText>
                 </QuestionHeader>
-                <AnswerContainer>
+                <ColumnAnswerContainer>
                   <AnswerText>
                     <Typography variant="body2">
                       Antwoord <strong>Mentor </strong>
@@ -427,29 +429,39 @@ const UsTogether = () => {
                       editedData.menteeVraag3
                     )}
                   </AnswerText>
-                </AnswerContainer>
+                </ColumnAnswerContainer>
               </Card>
 
               <ButtonContainer>
                 {!isEditing && (
-                  <StyledButton variant="outlined" onClick={handleEditClick}>
+                  <EvaluationFormButton
+                    variant="outlined"
+                    onClick={handleEditClick}
+                  >
                     Bewerken
-                  </StyledButton>
+                  </EvaluationFormButton>
                 )}
                 {isEditing ? (
-                  <StyledButton onClick={handleSaveClick} variant="contained">
+                  <EvaluationFormButton
+                    onClick={handleSaveClick}
+                    variant="contained"
+                  >
                     Opslaan
-                  </StyledButton>
+                  </EvaluationFormButton>
                 ) : (
-                  <StyledButton onClick={handleSend} variant="contained">
+                  <EvaluationFormButton
+                    onClick={handleSend}
+                    variant="contained"
+                  >
                     Verzenden
-                  </StyledButton>
+                  </EvaluationFormButton>
                 )}
               </ButtonContainer>
             </>
           ) : (
             <Typography variant="body1">
-              Geen gegevens gevonden. Maak een nieuwe scan.
+              Geen gegevens gevonden. Upload de foto opnieuw of maak een nieuwe
+              foto en upload deze voor analyse.
             </Typography>
           )}
         </RowContainer>

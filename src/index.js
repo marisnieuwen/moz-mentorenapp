@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client"; // Importeer de nieuwe client API
 import App from "./App";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration"; // Changed to serviceWorkerRegistration
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const theme = createTheme({
   typography: {
@@ -22,16 +22,28 @@ const theme = createTheme({
       fontSize: 16,
       color: "rgba(2, 2, 2, 0.87)",
     },
+    h4: {
+      fontFamily: "Montserrat, Arial",
+      fontWeight: 600,
+      fontSize: 15,
+      color: "rgba(2, 2, 2, 0.87)",
+    },
+    h4: {
+      fontFamily: "Montserrat, Arial",
+      fontWeight: 600,
+      fontSize: 15,
+      color: "rgba(2, 2, 2, 0.87)",
+    },
     body1: {
       fontFamily: "Montserrat, Arial",
       fontWeight: 400,
-      fontSize: 12,
-      color: "rgba(2, 2, 2, 0.87)",
+      fontSize: 14,
+      color: "rgba(2, 2, 2, 0.60)",
     },
     body2: {
       fontFamily: "Montserrat, Arial",
       fontWeight: 400,
-      fontSize: 11,
+      fontSize: 13,
       color: "rgba(2, 2, 2, 0.60)",
     },
     body3: {
@@ -48,18 +60,24 @@ const theme = createTheme({
       fontFamily: "Montserrat, Arial",
       fontWeight: 400,
       fontSize: 14,
-      color: "rgba(2, 2, 2, 0.87)",
+      color: "rgba(2, 2, 2, 0.60)",
+    },
+    body5: {
+      fontFamily: "Montserrat, Arial",
+      fontWeight: 400,
+      fontSize: 14,
+      color: "rgba(2, 2, 2, 0.60)",
     },
   },
 });
 
-// Zoek het root element
+// Search for the root container
 const container = document.getElementById("root");
 
-// Maak een root met de nieuwe API
+// Make the root container a root
 const root = ReactDOM.createRoot(container);
 
-// Render de applicatie
+// Render the app
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
