@@ -37,7 +37,7 @@ const BestandUploadModal = ({ open, onClose, onCapture }) => {
         // Send the image to the backend for analysis
         try {
           const response = await axios.post(
-            "https://moz-backend.azurewebsites.net/analyze-image", //change this to your backend URL
+            `${process.env.REACT_APP_BACKEND_URL}/analyze-image`, //make sure this is added in .env file
             formData,
             {
               headers: {
