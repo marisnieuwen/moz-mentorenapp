@@ -69,7 +69,12 @@ Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data k
     ```
 
 5. **Deploy de backend naar Azure App Service:**
+
    - Volg de instructies op de [Azure App Service documentatie](https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs) om je Node.js backend te deployen.
+
+6. **Deploy de backend naar Azure App Service:**
+
+- In 'FileUploadModal.js' component, zet bij de 'handleAnalyze' functie de juiste backend bij axios.
 
 ## Gebruik
 
