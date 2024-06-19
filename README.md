@@ -74,7 +74,12 @@ Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data k
 
 6. **Deploy de backend naar Azure App Service:**
 
-- In 'FileUploadModal.js' component, zet bij de 'handleAnalyze' functie de juiste backend bij axios.
+- In 'FileUploadModal.js' component, zet bij de 'handleAnalyze' functie de juiste backend variable bij axios.
+
+  - **Voorbeeld `backend_url`:**
+    ```
+    REACT_APP_BACKEND_URL=your_backend_url_here
+    ```
 
 ## Gebruik
 
