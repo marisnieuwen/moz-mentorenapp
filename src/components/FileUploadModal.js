@@ -81,9 +81,18 @@ const BestandUploadModal = ({ open, onClose, onCapture }) => {
       <DialogTitle variant="h5">Upload en Analyseer Bestand</DialogTitle>
       <DialogContent>
         {loading ? (
-          <Box display="flex" justifyContent="center" alignItems="center">
-            <CircularProgress sx={{ color: "#6951C6" }} />
-            <Typography variant="body1" mt={2}>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <CircularProgress
+              sx={{ color: "#6951C6" }}
+              size={30}
+              thickness={4}
+            />
+            <Typography variant="body1" textAlign="center">
               Antwoorden van de evaluatie worden gescand, even geduld...
             </Typography>
           </Box>
