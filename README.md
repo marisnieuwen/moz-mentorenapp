@@ -10,7 +10,7 @@ De evaluaties worden fysiek ingevuld tijdens een MoZ bijeenkomst door mentee en 
 
 Het analyseren van de evaluaties gebeurt in een Node.js backend die via Azure App Service in de cloud draait. Hierbij wordt een API-call gedaan naar de Microsoft Azure Vision API om de data van de afbeelding op te vragen. Deze data wordt vervolgens in een JSON-bestand geplaatst en geanalyseerd op specifieke datapunten zoals de x- en y-waarden van de zinnen "antwoord op vraag X". Op basis van deze waarden wordt gezocht naar emoji's voor vragen 1 en 2 en naar handgeschreven tekst voor vraag 3, die middels OCR wordt herkend.
 
-Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data kan bekijken en bewerken. Bij het versturen wordt de data samen met de `userData.json` naar de Firebase-database gestuurd. `userData.json` bevat hardcoded gebruikersgegevens. In de toekomst zouden dit echte gegevens moeten zijn, verkregen via Hogeschool Rotterdam SSO, waarbij de mentor een mentee aan zijn/haar (graag genderneutraal) account kan toevoegen.
+Dit proces gebeurt in een fractie van een seconde, waarna de gebruiker de data kan bekijken en bewerken. Bij het versturen wordt de data samen met de `userData.json` naar de Firebase-database gestuurd. `userData.json` bevat hardcoded gebruikersgegevens. In de toekomst zouden dit echte gegevens moeten zijn, verkregen via Hogeschool Rotterdam SSO, waarbij de mentor een mentee aan zijn/haar account kan toevoegen.
 
 ## Vereisten
 
